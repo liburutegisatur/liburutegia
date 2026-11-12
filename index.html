@@ -36,7 +36,7 @@ input[type=search]{width:100%;padding:11px 14px;border-radius:var(--r);border:1.
 .cover.img{padding:0;background:#cfd3e6}.cover img{width:100%;height:100%;object-fit:cover;display:block}.gal{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 22px 16px}.gal img{height:250px;width:auto;flex:none;border-radius:8px;scroll-snap-align:start;cursor:zoom-in;background:#cfd3e6}#zoom{max-width:min(96vw,720px);background:transparent;padding:0}#zoom img{width:100%;display:block;border-radius:10px;cursor:zoom-out}
 .t{font-weight:600;font-size:.95rem;line-height:1.2}
 .a{color:var(--muted);font-size:.85rem}
-.bd{position:absolute;top:8px;right:8px;z-index:2;font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:999px;color:#fff;line-height:1.3}.bd.ok{background:#14825A}.bd.no{background:#C2410C}.bd.re{background:#B7791F}.chk{display:flex;align-items:center;gap:8px;font-size:.92rem;color:var(--muted);cursor:pointer}.chk input{width:18px;height:18px;accent-color:var(--ink)}
+.bd{position:absolute;top:8px;right:8px;z-index:2;font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:999px;color:#fff;line-height:1.3}.bd.ok{background:#14825A}.bd.oc{background:#C2410C}.bd.re{background:#B7791F}.chk{display:flex;align-items:center;gap:8px;font-size:.92rem;color:var(--muted);cursor:pointer}.chk input{width:18px;height:18px;accent-color:var(--ink)}
 .empty{margin:40px 0;color:var(--muted)}
 dialog{border:0;border-radius:18px;padding:0;max-width:560px;width:calc(100% - 28px);background:var(--surface);color:var(--ink);max-height:calc(100% - 40px)}
 dialog::backdrop{background:rgba(10,12,35,.6)}
@@ -96,7 +96,7 @@ const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"
 const norm=s=>String(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 function bg(b){const h=(HUE[b.tema]||HUE[b.idioma]||200)+((b.id*37)%28)-14;const l=30+((b.id*13)%12);return `linear-gradient(160deg,hsl(${h} 62% ${l+8}%),hsl(${h+14} 66% ${l-6}%))`}
 function cover0(b){if(b.portada)return `<div class="cover img"><img src="${b.portada}" alt="${esc(b.titulo)}" loading="lazy"></div>`;return `<div class="cover" style="background:${bg(b)}"><small>${esc(b.autor.split(" eta ")[0].split(" (")[0])}</small><b>${esc(b.titulo)}</b></div>`}
-const ST={d:["Eskuragarri","ok"],p:["Mailegatuta","no"],r:["Erreserbatuta","re"]};
+const ST={d:["Eskuragarri","ok"],p:["Mailegatuta","oc"],r:["Erreserbatuta","re"]};
 function badge(b){const s=ST[b.estado||"d"];return `<span class="bd ${s[1]}">${s[0]}</span>`}
 const VC={hz:"#7B3FC4",eu:"#E0801A",en:"#2E9E5B",es:"#D6264A"};const vc=b=>VC[["Hezkidetza","Bienestar emocional","Educación sexual"].includes(b.tema)?"hz":({Euskera:"eu","Inglés":"en",Castellano:"es"})[b.idioma]];
 function cover(b){return cover0(b).replace(/<\/div>$/,badge(b)+`<span class="no" style="background:${vc(b)}" title="Liburuaren zenbakia">${b.id}</span></div>`)}
